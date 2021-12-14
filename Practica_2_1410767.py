@@ -8,7 +8,8 @@ import pprint
 def Organizations_Meraki(url,headers):
     r = requests.get(url, headers=headers)
     org_json = r.json()
-    #pprint.pprint(org_json)
+    #Verificacion de errores
+    print("Errores: ",r.raise_for_status())
     org_list =[]
     for organization in org_json:
         org_list.append(organization['name'])
@@ -24,6 +25,14 @@ headers = {
     "Accept": "application/json",
     "X-Cisco-Meraki-API-Key": "6bec40cf957de430a6f1f2baa056b99a4fac9ea0"
 }
+
+
+Lista_Org = Organizations_Meraki(url, headers=headers)
+print(Lista_Org)
+
+
+
+
 
 
 
