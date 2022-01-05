@@ -3,6 +3,7 @@
 
 
 import requests
+import time
 import pprint
 import csv
 
@@ -60,8 +61,16 @@ headers = {
 
 url_devices = "https://api.meraki.com/api/v1/organizations/681155/devices"
 
+start_time = time.time() - 300
 
-Inventario(url_devices,headers=headers)
+while True:
+    if time.time() - start_time >= 300:
+        start_time = time.time()
+        Inventario(url_devices,headers=headers)
+
+    
+
+
 
 
 
